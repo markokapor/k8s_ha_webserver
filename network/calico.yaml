@@ -60,8 +60,8 @@ spec:
     kind: FelixConfiguration
     plural: felixconfigurations
     singular: felixconfiguration
+    
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -76,7 +76,6 @@ spec:
     singular: ipamblock
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -91,7 +90,6 @@ spec:
     singular: blockaffinity
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -106,7 +104,6 @@ spec:
     singular: ipamhandle
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -121,7 +118,6 @@ spec:
     singular: ipamconfig
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -136,7 +132,6 @@ spec:
     singular: bgppeer
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -151,7 +146,6 @@ spec:
     singular: bgpconfiguration
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -166,7 +160,6 @@ spec:
     singular: ippool
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -181,7 +174,6 @@ spec:
     singular: hostendpoint
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -196,7 +188,6 @@ spec:
     singular: clusterinformation
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -211,7 +202,6 @@ spec:
     singular: globalnetworkpolicy
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -226,7 +216,6 @@ spec:
     singular: globalnetworkset
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -241,7 +230,6 @@ spec:
     singular: networkpolicy
 
 ---
-
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -254,6 +242,7 @@ spec:
     kind: NetworkSet
     plural: networksets
     singular: networkset
+    
 ---
 # Source: calico/templates/rbac.yaml
 
@@ -303,6 +292,7 @@ rules:
       - get
       - create
       - update
+      
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -316,6 +306,7 @@ subjects:
 - kind: ServiceAccount
   name: calico-kube-controllers
   namespace: kube-system
+  
 ---
 # Include a clusterrole for the calico-node DaemonSet,
 # and bind it to the calico-node serviceaccount.
@@ -449,6 +440,7 @@ rules:
       - daemonsets
     verbs:
       - get
+      
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -712,8 +704,8 @@ spec:
           hostPath:
             type: DirectoryOrCreate
             path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec/nodeagent~uds
+            
 ---
-
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -774,7 +766,6 @@ spec:
               - -r
 
 ---
-
 apiVersion: v1
 kind: ServiceAccount
 metadata:
