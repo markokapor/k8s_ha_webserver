@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: haproxy-stats
+  namespace: monitoring
+spec:
+  type: ExternalName
+  externalName: haproxy-stats.haproxy.svc.cluster.local
+  ports:
+  - port: 1024
