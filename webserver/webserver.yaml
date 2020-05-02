@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: webserver-nodes
+  namespace: static-web
+  labels:
+      app: webserver-nodes
+      
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webserver-nodes
+  template:
+    metadata:
+      labels:
+        app: webserver-nodes
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - webserver-nodes
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: apache
+        image: bl3nto/static-web:latest
+        resources:
+          limits:
+            memory: "196Mi"
+            cpu: "25m"
+        ports:
+        - containerPort: 80

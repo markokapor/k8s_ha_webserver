@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: haproxy
+  namespace: haproxy
+  labels:
+      app: haproxy
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: haproxy
+  template:
+    metadata:
+      labels:
+        app: haproxy
+    spec:
+      containers:
+      - name: haproxy-lb
+        image: haproxytech/kubernetes-ingress
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "50Mi"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 1024
+        ports:
+        - name: http
+          containerPort: 80
+        - name: stat
+          containerPort: 1024
+        volumeMounts:
+        - name: haproxy-config-volume
+          mountPath: /etc/haproxy/haproxy.cfg
+          subPath: haproxy.cfg
+      volumes:
+      - name: haproxy-config-volume
+        configMap:
+          name: haproxy-configmap
+          items:
+          - key: haproxy.cfg
+            path: haproxy.cfg

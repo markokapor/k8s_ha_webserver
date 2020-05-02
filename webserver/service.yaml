@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webservers
+  namespace: static-web
+spec:
+  selector:
+    app: webserver-nodes
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80

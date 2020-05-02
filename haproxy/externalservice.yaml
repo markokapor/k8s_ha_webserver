@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: webnodes
+  namespace: haproxy
+spec:
+  type: ExternalName
+  externalName: webservers.static-web.svc.cluster.local
+  ports:
+  - port: 80
