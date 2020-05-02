@@ -1,4 +1,4 @@
-# Kubernetes manifest files used of HA web server deployment
+# Kubernetes manifest files used for HA web server deployment
 
 This repository contains YAML manifest files that can be used to deploy Highly Available webservers that host static content behind a HAProxy load balancer with Grafana used for cluster/HAproxy monitoring.
 
