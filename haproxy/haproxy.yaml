@@ -8,9 +8,9 @@ metadata:
   labels:
       app: haproxy
   annotations:  
-    prometheus.io/port: '1024'
-    prometheus.io/scrape: 'true'
-    prometheus.io/path: '/metrics'
+    prometheus.io/port: "1024"
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics"
   
 spec:
   replicas: 1
